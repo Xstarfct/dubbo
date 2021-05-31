@@ -126,7 +126,7 @@
         <arguments />
         <checkstyle.skip>true</checkstyle.skip>
         <rat.skip>true</rat.skip>
-        <revision>2.7.10-SNAPSHOT</revision>
+        <revision>2.7.12-SNAPSHOT</revision>
     </properties>
 
     <modules>
@@ -151,6 +151,7 @@
         <module>dubbo-dependencies</module>
         <module>dubbo-metadata</module>
         <module>dubbo-build-tools</module>
+        <module>dubbo-spring-boot</module>
     </modules>
 
     <dependencyManagement>
@@ -187,6 +188,12 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <version>${mockito_version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
             <version>${mockito_version}</version>
             <scope>test</scope>
         </dependency>
