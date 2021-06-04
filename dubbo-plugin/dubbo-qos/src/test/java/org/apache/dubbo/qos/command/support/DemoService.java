@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-service ClassNameTestThrift {
-    string echo(1:required string arg);
+package org.apache.dubbo.qos.command.support;
+
+public interface DemoService {
+    void sayHello(String name);
 }

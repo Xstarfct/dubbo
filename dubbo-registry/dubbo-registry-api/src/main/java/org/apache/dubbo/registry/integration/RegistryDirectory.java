@@ -173,7 +173,6 @@ public class RegistryDirectory<T> extends DynamicDirectory<T> {
             routerChain.setInvokers(this.invokers);
             destroyAllInvokers(); // Close all invokers
         } else {
-            this.forbidden = false; // Allow to access
             Map<URL, Invoker<T>> oldUrlInvokerMap = this.urlInvokerMap; // local reference
             if (invokerUrls == Collections.<URL>emptyList()) {
                 invokerUrls = new ArrayList<>();
@@ -187,6 +186,7 @@ public class RegistryDirectory<T> extends DynamicDirectory<T> {
             if (invokerUrls.isEmpty()) {
                 return;
             }
+            this.forbidden = false; // Allow to access
             Map<URL, Invoker<T>> newUrlInvokerMap = toInvokers(invokerUrls);// Translate url list to Invoker map
 
             /**
@@ -459,7 +459,7 @@ public class RegistryDirectory<T> extends DynamicDirectory<T> {
         }
         Map<URL, Invoker<T>> localUrlInvokerMap = urlInvokerMap;
         try {
-            if (CollectionUtils.isNotEmptyMap(localUrlInvokerMap)
+            if (!forbidden && CollectionUtils.isNotEmptyMap(localUrlInvokerMap)
                     && localUrlInvokerMap.values().stream().anyMatch(Invoker::isAvailable)) {
                 return true;
             }

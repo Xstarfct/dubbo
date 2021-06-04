@@ -14,6 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-service ClassNameTestThrift {
-    string echo(1:required string arg);
+package org.apache.dubbo.qos.command.impl;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class VersionTest {
+    @Test
+    public void test(){
+        Version version = new Version();
+        String msg = version.execute(null,null);
+        Assertions.assertNotNull(msg);
+    }
 }
